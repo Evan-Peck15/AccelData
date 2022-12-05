@@ -1,0 +1,58 @@
+
+data0 = readmatrix('TEK00000.csv');
+data1 = readmatrix('TEK00001.csv');
+data2 = readmatrix('TEK00002.csv');
+data3 = readmatrix('TEK00003.csv');
+data4 = readmatrix('TEK00004.csv');
+data5 = readmatrix('TEK00005.csv');
+data6 = readmatrix('TEK00006.csv');
+data7 = readmatrix('TEK00007.csv');
+data8 = readmatrix('TEK00008.csv');
+data9 = readmatrix('TEK00009.csv');
+t0 = data0(12:end,1);
+a0 = data0(12:end, 2);
+t1 = data0(12:end,1);
+a1 = data0(12:end, 2);
+t2 = data0(12:end,1);
+a2 = data0(12:end, 2);
+t3 = data0(12:end,1);
+a3 = data0(12:end, 2);
+t4 = data0(12:end,1);
+a4 = data0(12:end, 2);
+t5 = data0(12:end,1);
+a5 = data0(12:end, 2);
+t6 = data0(12:end,1);
+a6 = data0(12:end, 2);
+t7 = data0(12:end,1);
+a7 = data0(12:end, 2);
+t8 = data0(12:end,1);
+a8 = data0(12:end, 2);
+t9 = data0(12:end,1);
+a9 = data0(12:end, 2);
+
+%%F_samp=
+figure
+plot(t0,a0)
+xlabel('time')
+ylabel('Amp.')
+title('Rawr Data')
+
+for i = 1:10
+    L(i,:) = (t(i,end)-t(i,1))*1000;
+    Y(i,:)=fft(a(i,:));
+    P2(i,:)=abs(Y(i,:)/L(i));
+    P1(i,:)=P2(i,1:L0/2+1);
+    P1(i,2:end-1)=2*P1(i,2:end-1);
+    F_samp0 = 2000/(t0(end)-t0(1));
+    f0 = F_samp0*(0:(L0/2))/L0;
+end
+figure
+plot(f0,P1)
+xlabel('Freq (Hz)')
+ylabel('|P1(f)|')
+title('Single-Sided Amplitude Spectrum of Accel.')
+
+
+
+
+
